@@ -1,0 +1,16 @@
+{
+  "name": "youtuberrelated",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-webserver": "^0.9.1",
+    "main-bower-files": "^2.9.0"
+  }
+}

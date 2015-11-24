@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="visApp" >
+
+<head>
+  <meta charset='utf-8' />
+  <link href="style/site.css" rel="stylesheet" />
+  <link href="style/site.css" rel="stylesheet" />
+  <!--<meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">-->
+
+</head>
+
+<body>
+  <div ng-controller="visAppCtrl">
+    <button ng-click="authorize()">Authorize</button>
+    <button ng-click="getUsersSubscriptions()">Get Subscriptions</button>
+    <button ng-click="getChannelsBrandingSettings(subscriptions)">GetBrandingSettings</button>
+  </div>
+  
+  
+  
+  
+  <div ng-controller="visMainCtrl">
+    <button ng-click="addNode()"></button>
+    <vis-network data="data" options="options" events="events" height="100%"></vis-network>
+  </div>
+  
+  
+  
+  <!--Dependencies-->
+  <!--JQuery-->
+  <script src="lib/jquery.js"></script>
+  <!--D3-->
+  <script src="lib/d3.js"></script>
+  <!--Cytoscapejs-->
+  <script src="lib/cytoscape.js"></script>
+  <!--Vis.js-->
+  <script src="lib/vis.min.js"></script>
+  <!--Angular-->
+  <script src="lib/angular.js"></script>
+  <script src="lib/angular-vis.js"></script>
+  <script src="lib/angular.visgraph-0.0.1.js"></script>
+  
+  <script src="lib/angular-google-gapi.min.js"></script>
+  <script src="lib/angular-ui-router.js"></script>
+  <!--App-->
+  <script src="app/app.js"></script>
+  <script src="app/controllers/visAppCtrl.js"></script>
+  <!--CytoscapeJS Angular -->
+  <!--<script src="app/services/peopleGraph.js"></script>-->
+  
+  <!--VisJs Angular-->
+  <!--<script src="app/controllers/visjsCtrl.js"></script>-->
+  <!--<script src="app/controllers/visGraphCtrl.js"></script>-->
+  <!--<script src="app/services/visGraphDataService.js"></script>-->
+  
+  <script src="app/controllers/visMainCtrl.js"></script>
+</body>
+  
+</html>
+
+
+<!--<div ng-controller="visGraphCtrl">
+	  <h1>AngularJS - vis.js Graph</h1>
+    <button ng-click="addNode(9, 'label 1')">AddNode</button>
+	  <div ng-switch on="graph.error">
+	  	<div ng-switch-when="0">
+	  	  <div id="graph" vis-graph data="graph.data" options="graph.options" event="select" callback="callbackFunction(params)" style="width: 100%; height: 600px"></div>
+	  	</div>
+		<div ng-switch-default></div>
+	  </div>
+  </div>-->
+
+
+<!--<div ng-controller="MainCtrl">
+  <vis-graph2d ng-show="graphLoaded" data="graphData" options="graphOptions" events="graphEvents"></vis-graph2d>
+  </div>-->
+  <!--<yt-visualization val="data"></yt-visualization>-->
+
+  <!--<div id="cy"></div>
+  
+  <table id="people-table" ng-controller="PeopleCtrl">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Weight</th>
+      </tr>
+      <tr ng-repeat="person in people">
+        <td>{{person.name}}</td>
+        <td><input type="number" min="1" ng-model="person.weight" ng-change="onWeightChange(person)" /></td>
+      </tr>
+      <tr>
+        <td>
+          <button ng-click="addNode()">addPerson</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>-->
