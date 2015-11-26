@@ -1,4 +1,4 @@
-app.controller('visAppCtrl', function($scope, GApi, GAuth, $rootScope){
+app.controller('ytAuthCtrl', function($scope, GApi, GAuth, $rootScope){
 	window.MYSCOPE = $scope;
 	window.GAPI = GApi;
 	
