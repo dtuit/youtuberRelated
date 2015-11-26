@@ -7,7 +7,9 @@
 			requestSubscriptionsList: requestSubscriptionsList,
 			requestChannelsList: requestChannelsList,
 			requestVideosList : requestVideosList,
+			requestSearchList : requestSearchList,
 			
+			getChannelSearchResults : getChannelSearchResults,
 			getAllSubscriptions: getAllSubscriptions,
 			getChannelsBrandingSettings: getChannelsBrandingSettings,
 			getChannelChannelTrailerCategory : getChannelChannelTrailerCategory
@@ -24,7 +26,24 @@
 		function requestVideosList(requestParams){
 			return GApi.execute('youtube', 'videos.list', requestParams)
 		}
+		
+		function requestSearchList(requestParams){
+			return GApi.execute('youtube', 'search.list', requestParams)
+		}
+		
+		function getChannelSearchResults(query, pageToken){
 
+			var requestParms = {
+				maxResults : 15,
+				part : "snippet",
+				type : "channel",
+				q : query
+			}
+			if(pageToken) requestParms.pageToken = pageToken;
+					
+			return requestSearchList(requestParms)
+		}
+		
 		function getAllSubscriptions() {
 			var defer = $q.defer();
 			var requestParams = {
@@ -57,6 +76,7 @@
 			var promises = [];
 			var requestParams = {
 				part : "snippet"
+				// fields : ""
 			}
 			
 			var chunks = videoIds.chunk(50);
@@ -93,7 +113,7 @@
 				requestParams.id = cids;
 				promises.push(requestChannelsList(requestParams))
 			}
-
+			
 			$q.all(promises).then(
 				function (values) {
 					
@@ -101,7 +121,6 @@
 						return { items: prev.items.concat(cur.items) };
 					}).items
 					
-					// var retval = ytMapDataService.mapYtDataToNodesAndEdges(channelsBrandingSettings)	
 					defer.resolve(results);
 					
 				}, function (error) {

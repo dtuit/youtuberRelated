@@ -15,6 +15,16 @@
             width: '100%',
             physics:{
                 enabled: true
+            },
+            stabilization: false,
+            barnesHut: {
+                gravitationalConstant: -80000,
+                springConstant: 0.001,
+                springLength: 200
+            },
+            interaction: {
+            tooltipDelay: 200,
+            hideEdgesOnDrag: true
             }
         };
 
@@ -61,6 +71,7 @@
                     })
         }
         
+        
         $scope.actuallyGetGetInitialData = function(){
             ytDataService.getAllSubscriptions().then(function(res){
                 $scope.initialData = res.map(function(x){
@@ -96,6 +107,7 @@
                 console.log(t0-t1, 'miliseconds')
                 var t2 = performance.now();
                 for (var i = 0; i < res.length; i++) {
+                    var t4 = performance.now();
                     for (var j = 0; j < res[i].links.length; j++) {
                         try {
                             var key = [res[i].id, res[i].links[j]].sort(function(a,b){return a.localeCompare(b)}).join('#')
@@ -105,6 +117,8 @@
                         }
 
                     }
+                    var t5 = performance.now();
+                    console.log(t5-t4, 'miliseconds')
                 }
                 var t3 = performance.now();
                 console.log(t2-t3, 'miliseconds')
@@ -113,7 +127,6 @@
         
         $scope.startGetData = function(){
             var defer = $q.defer();
-            // var cids = ["UC6nSFpj9HTCZ5t-N3Rm3-HA", "UCqmugCqELzhIMNYnsjScXXw", "UCwmFOfFuvRPI112vR5DNnrA"]
             var cids = $scope.initialData;
             var nodes = [];
             
