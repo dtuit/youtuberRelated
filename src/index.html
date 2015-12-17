@@ -14,7 +14,16 @@
         <button ng-click="getUsersSubscriptions()">Get Subscriptions</button>
         <button ng-click="getChannelsBrandingSettings(subscriptions)">GetBrandingSettings</button>
     </div>
-
+    
+    <div ng-controller="ytSearchCtrl">
+        <button ng-click="searchChannels()">searchChannels</button>
+        <ul>
+            <li ng-repeat="searchResult in searchResults">
+                
+            </li>
+        </ul>
+    </div>
+    
     <div ng-controller="ytGraphCtrl">
         <button ng-click="addNode()">addNode</button>
         <button ng-click="getChannelData()">addNode</button>
@@ -23,6 +32,8 @@
         <button ng-click="actuallyGetGetInitialData()">actuallyGetGetInitialData</button>
         <vis-network data="data" options="options" events="events" height="100%"></vis-network>
     </div>
+
+    
 
     <!--Dependencies-->
     <!--Vis.js-->

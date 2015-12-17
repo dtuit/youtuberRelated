@@ -4,9 +4,10 @@
     ytGraphCtrl.$inject = ['$scope', 'VisDataSet', 'ytDataService', '$q']
     function ytGraphCtrl($scope, VisDataSet, ytDataService, $q) {
         window.MYSCOPE2 = $scope;
+        // var cids = ["UC6nSFpj9HTCZ5t-N3Rm3-HA", "UCqmugCqELzhIMNYnsjScXXw", "UCwmFOfFuvRPI112vR5DNnrA"]
         
-        $scope.initialData = [];
-        
+        $scope.initialData = [];        
+
         $scope.events = {};
 
         $scope.options = {
@@ -31,47 +32,8 @@
         $scope.nodes = new vis.DataSet();
         $scope.edges = new vis.DataSet();
 
-//         $scope.nodes.add([
-//             { id: 1, label: "item 1" },
-//             { id: 2, label: "item 2" }
-//         ]);
-// 
-//         $scope.edges.add([
-//             { from: 1, to: 2 }
-//         ])
-
-        // $scope.options = {
-        //     autoResize: true,
-        //     height: '800',
-        //     width: '100%'
-        // };
-
         $scope.data = { nodes: $scope.nodes, edges: $scope.edges, options: $scope.options }
 
-        $scope.addNode = function (id, label) {
-            $scope.nodes.add({ id: 3, label: label })
-            $scope.edges.add({ from: 3, to: 2 })
-        }
-
-        $scope.getChannelData = function () {
-            var cids = ["UC6nSFpj9HTCZ5t-N3Rm3-HA", "UCqmugCqELzhIMNYnsjScXXw", "UCwmFOfFuvRPI112vR5DNnrA"];
-            
-            ytDataService.getChannelsBrandingSettings(cids)
-                .then(function (res) {
-                    
-                })
-        }
-        
-        $scope.getChannelCategory = function(){
-            var vids = ["LD0x7ho_IYc", "AsACeAkvFLY", "-6NZMAbfmW0"];
-            
-            ytDataService.getChannelChannelTrailerCategory(vids)
-                .then(function(res){
-                    console.log(res)
-                    })
-        }
-        
-        
         $scope.actuallyGetGetInitialData = function(){
             ytDataService.getAllSubscriptions().then(function(res){
                 $scope.initialData = res.map(function(x){
@@ -83,13 +45,11 @@
             })
         }
         
-        
         $scope.getInitalData = function(){
-            // var cids = ["UC6nSFpj9HTCZ5t-N3Rm3-HA", "UCqmugCqELzhIMNYnsjScXXw", "UCwmFOfFuvRPI112vR5DNnrA"]
-            
             $scope.startGetData().then(function(res){
                 console.log(res);
                 var t0 = performance.now();
+                
                 for(var i = 0; i < res.length; i++){ var item = res[i];
                     try {
                         $scope.nodes.add({
@@ -125,6 +85,8 @@
             })
         }
         
+
+        
         $scope.startGetData = function(){
             var defer = $q.defer();
             var cids = $scope.initialData;
@@ -141,6 +103,10 @@
                 defer.resolve(nodes);    
             })
             return defer.promise;
+        }
+        
+        function convertToNode(){
+            
         }
         
         $scope.getData = function(channelIds){
