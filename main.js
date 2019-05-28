@@ -1,5 +1,5 @@
-var clientId = '139414527821-nopjkt0c1h56mqisrmtkjcenolpi6j2v.apps.googleusercontent.com';
-var apiKey = 'AIzaSyBXspCKR532IXLBi7Vgv_D7o_h4IpG_84A';
+var clientId = 'CLIENT_ID';
+var apiKey = 'API_KEY';
 var scopes = ['https://www.googleapis.com/auth/plus.me',
 	'https://www.googleapis.com/auth/youtube.readonly'];
 
