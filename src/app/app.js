@@ -2,8 +2,8 @@ var app  = angular.module('visApp', ['angular-google-gapi', 'angular.visgraph', 
 
 app.run(['GAuth', 'GApi', function(GAuth, GApi){
 	
-	var clientId = '139414527821-nopjkt0c1h56mqisrmtkjcenolpi6j2v.apps.googleusercontent.com';
-	var apiKey = 'AIzaSyBXspCKR532IXLBi7Vgv_D7o_h4IpG_84A';
+	var clientId = 'CLIENT_ID';
+	var apiKey = 'API_KEY';
 	
 	GApi.load('youtube', 'v3');
 	GAuth.setScope('https://www.googleapis.com/auth/youtube.readonly')
